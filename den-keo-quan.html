@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đèn Kéo Quân 3D</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #0f172a;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+        }
+
+        .top-bar a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .scene {
+            width: 240px;
+            height: 180px;
+            perspective: 1000px;
+            margin-top: 40px;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .face {
+            position: absolute;
+            width: 220px;
+            height: 160px;
+            left: 10px;
+            top: 10px;
+            border: 3px solid #facc15;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+            cursor: pointer;
+        }
+
+        .face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Xếp 6 mặt thành hình lục giác vòng tròn (mỗi mặt cách nhau 60 độ) */
+        .face:nth-child(1) {
+            transform: rotateY(0deg) translateZ(230px);
+        }
+
+        .face:nth-child(2) {
+            transform: rotateY(60deg) translateZ(230px);
+        }
+
+        .face:nth-child(3) {
+            transform: rotateY(120deg) translateZ(230px);
+        }
+
+        .face:nth-child(4) {
+            transform: rotateY(180deg) translateZ(230px);
+        }
+
+        .face:nth-child(5) {
+            transform: rotateY(240deg) translateZ(230px);
+        }
+
+        .face:nth-child(6) {
+            transform: rotateY(300deg) translateZ(230px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <h2>🏮 Đèn Kéo Quân - Võ Đặng Gia Bảo (MSSV: 241A010008)</h2>
+        <p>Rê chuột vào ảnh để dừng đèn • Rê ra ngoài để quay tiếp | <a href="index.html">← Về Trang chủ</a></p>
+    </div>
+
+    <div class="scene">
+        <div class="carousel" id="carousel">
+            <div class="face"><img src="images/anh1.jpg" alt="Ảnh 1"></div>
+            <div class="face"><img src="images/anh2.jpg" alt="Ảnh 2"></div>
+            <div class="face"><img src="images/anh3.jpg" alt="Ảnh 3"></div>
+            <div class="face"><img src="images/anh4.jpg" alt="Ảnh 4"></div>
+            <div class="face"><img src="images/anh5.jpg" alt="Ảnh 5"></div>
+            <div class="face"><img src="images/anh6.jpg" alt="Ảnh 6"></div>
+        </div>
+    </div>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const faces = document.querySelectorAll('.face');
+        let angle = 0;
+        let isPaused = false;
+
+        // Hàm quay đèn liên tục bằng JavaScript
+        function rotateLantern() {
+            if (!isPaused) {
+                angle += 0.4; // Tốc độ quay
+                carousel.style.transform = `rotateY(${angle}deg)`;
+            }
+            requestAnimationFrame(rotateLantern);
+        }
+
+        // Bắt sự kiện rê chuột vào/ra từng mặt ảnh
+        faces.forEach(face => {
+            face.addEventListener('mouseenter', () => { isPaused = true; });
+            face.addEventListener('mouseleave', () => { isPaused = false; });
+        });
+
+        rotateLantern();
+    </script>
+</body>
+
+</html>

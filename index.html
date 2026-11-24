@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 24 - Tổng hợp & Đèn kéo quân</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background: #1e293b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #334155;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+        }
+
+        nav a,
+        nav button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav button:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-special {
+            background: #e11d48 !important;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .result-img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>BÀI TẬP 24 - TỔNG HỢP KẾT QUẢ</h1>
+        <p>Họ tên: <strong>Võ Đặng Gia Bảo</strong> | MSSV: <strong>[241A010008]</strong></p>
+    </header>
+
+    <nav>
+        <button onclick="showBai(17)">Bài tập 17</button>
+        <button onclick="showBai(18)">Bài tập 18</button>
+        <button onclick="showBai(19)">Bài tập 19</button>
+        <button onclick="showBai(20)">Bài tập 20</button>
+        <button onclick="showBai(21)">Bài tập 21</button>
+        <button onclick="showBai(22)">Bài tập 22</button>
+        <a href="den-keo-quan.html" class="btn-special">🏮 Đèn Kéo Quân (JS)</a>
+    </nav>
+
+    <main>
+        <h2 id="title">Kết quả Bài tập 17</h2>
+        <img id="preview" src="images/bt17.png" alt="Ảnh kết quả bài tập" class="result-img">
+    </main>
+
+    <script>
+        function showBai(so) {
+            document.getElementById('title').innerText = 'Kết quả Bài tập ' + so;
+            document.getElementById('preview').src = 'images/bt' + so + '.png';
+        }
+    </script>
+</body>
+
+</html>
